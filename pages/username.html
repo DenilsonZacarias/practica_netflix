@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Selection</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-black h-screen flex flex-col">
+    <!--Icone Netflix e botao editar-->
+    <div class="flex flex-row gap-14 justify-center items-center mt-3 ml-16">
+      <img src="../assets/logos_netflix.svg" class="w-32 h-12" />
+      <!--Botao editar-->
+      <button
+        class="p-2 rounded hover:bg-red-500 hover:shadow transition group"
+      >
+        <span>
+          <img src="../assets/edit-pencil.svg" class="w-6 h-6" />
+        </span>
+      </button>
+    </div>
+    <!--div com os usuarios-->
+    <div class="flex items-center justify-center mt-14">
+      <div class="grid grid-cols-2 gap-4 w-[230px]">
+        <!--Emenalo-->
+        <button
+          class="transition transform hover:-translate-x-14 hover:shadow-lg"
+        >
+          <img
+            src="../assets/user1.svg"
+            class="w-full h-full object-cover rounded"
+          />
+        </button>
+        <!--Onyeka-->
+        <button
+          class="transition transform hover:-translate-y-10 hover:shadow-lg"
+        >
+          <img
+            src="../assets/user2.svg"
+            class="w-full h-full object-cover rounded"
+          />
+        </button>
+        <!--Thelma-->
+        <button
+          class="transition transform hover:-translate-x-14 hover:shadow-lg"
+        >
+          <img
+            src="../assets/user3.svg"
+            class="w-full h-full object-cover rounded"
+          />
+        </button>
+        <!--Kids-->
+        <button
+          class="transition transform hover:translate-y-10 hover:shadow-lg"
+        >
+          <img
+            src="../assets/user4.svg"
+            class="w-full h-full object-cover rounded"
+          />
+        </button>
+      </div>
+    </div>
+    <!--div com o botao de adicionar usuario-->
+    <div class="flex flex-col justify-center mt-14 w-fit ml-12">
+      <button
+        class="text-white font-semibold rounded-full flex flex-col items-center p-3 hover:text-black hover:bg-red-500 transition"
+      >
+        <img src="../assets/Add_profile_icon.svg" class="w-12 h-12" />
+        <span class="mt-2">Add profile</span>
+      </button>
+    </div>
+    <!--Js para actualizacao de hora automatica
+    <script>
+      function updateTime() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        });
+        document.getElementById("time").textContent = timeString;
+      }
+
+      // Update time immediately and every second
+      updateTime();
+      setInterval(updateTime, 1000);
+    </script>-->
+  </body>
+</html>

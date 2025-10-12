@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Esconde o scrollbar horizontal no Webkit (Chrome, Safari, Edge) */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Firefox */
+      .no-scrollbar {
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-black flex flex-col pb-15">
+    <!--div app principal-->
+    <div id="app">
+      <!-- div com background img-->
+      <div class="flex relative w-full h-[60vh]">
+        <img
+          src="./assets/screaming_ancient_warrior.svg"
+          class="w-full object-cover"
+        />
+        <!-- div com a logo da Netflix-->
+        <div
+          class="flex flex-row absolute z-10 mt-10 px-2 justify-between items-center w-full"
+        >
+          <img src="./assets/logo_netflix-icon.svg" />
+          <button>
+            <h1
+              class="font-light text-white font-[Open Sans] text-xl hover:text-red-600 transition"
+            >
+              TV Shows
+            </h1>
+          </button>
+          <button>
+            <h1
+              class="font-light text-white font-[Open Sans] text-xl hover:text-red-600 transition"
+            >
+              Movies
+            </h1>
+          </button>
+          <button>
+            <h1
+              class="font-light text-white font-[Open Sans] text-xl hover:text-red-600 transition"
+            >
+              My List
+            </h1>
+          </button>
+        </div>
+      </div>
+
+      <!-- #2 in Nigeria-->
+      <div
+        class="flex flex-row items-center justify-center h-9 w-auto px-4 gap-1 mt-0"
+      >
+        <img src="./assets/top10.svg" />
+        <h1 class="text-white font-medium">#2 in Mozambique Today</h1>
+      </div>
+
+      <!-- Botao Play e Companhia-->
+      <div class="flex flex-row px-7 items-center justify-between mt-3">
+        <!--My list-->
+        <div
+          class="flex flex-col items-center hover:bg-neutral-800 rounded-full p-2"
+        >
+          <button>
+            <img src="./assets/ant-design_plus-outlined.svg" />
+          </button>
+          <p class="text-white font-light font-[Open Sans]">My List</p>
+        </div>
+        <!-- Botao Play-->
+        <!-- ✅ CORRETO -->
+        <div
+          class="bg-[#C4C4C4] flex items-center justify-center py-2 px-5 rounded-md hover:bg-red-600"
+        >
+          <button data-page="video">
+            <img src="./assets/play_icon_&_word.svg" />
+          </button>
+        </div>
+        <!-- Info -->
+        <div
+          class="flex flex-col items-center hover:bg-neutral-800 rounded-full p-2"
+        >
+          <button><img src="./assets/feather_info.svg" /></button>
+          <p class="text-white font-light font-[Open Sans]">Info</p>
+        </div>
+      </div>
+
+      <!-- Previews -->
+      <div class="px-3 mt-4">
+        <h1 class="text-white text-xl font-semibold mb-2">Previews</h1>
+        <div class="flex gap-1 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 overflow-hidden relative"
+          >
+            <img
+              src="./assets/serious_face.svg"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 overflow-hidden relative"
+          >
+            <img
+              src="./assets/shooting_guy.svg"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 overflow-hidden relative"
+          >
+            <img
+              src="./assets/queens_gambit.svg"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 overflow-hidden relative"
+          >
+            <img
+              src="./assets/black_face.svg"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Continue Watching for user -->
+      <div class="px-3 mt-5">
+        <h1 class="font-semibold text-white font-[Open Sans] text-xl">
+          Continue Watching for Emenalo
+        </h1>
+        <!-- Container dos filmes -->
+        <div class="flex gap-2 overflow-x-auto no-scrollbar mt-2">
+          <!--Movie 1-->
+          <div class="flex flex-col relative flex-shrink-0 w-30 group">
+            <!-- Transformei em botão -->
+            <button data-page="video" class="w-full">
+              <img
+                src="./assets/night_school.png"
+                class="h-[180px] object-cover rounded-t w-full transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 rounded-t bg-black bg-opacity-0 group-hover:bg-opacity-30 transition pointer-events-none"
+              ></div>
+            </button>
+
+            <div
+              class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
+            >
+              <button>
+                <img
+                  src="./assets/more_info.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+              <button>
+                <img
+                  src="/assets/more_options.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+            </div>
+          </div>
+
+          <!--Movie 2-->
+          <div class="flex flex-col relative flex-shrink-0 w-30 group">
+            <button data-page="video" class="w-full">
+              <img
+                src="./assets/christmas_chronicles.png"
+                class="h-[180px] object-cover rounded-t w-full transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 rounded-t bg-black bg-opacity-0 group-hover:bg-opacity-30 transition pointer-events-none"
+              ></div>
+            </button>
+            <div
+              class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
+            >
+              <button>
+                <img
+                  src="./assets/more_info.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+              <button>
+                <img
+                  src="/assets/more_options.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+            </div>
+          </div>
+
+          <!--Movie 3-->
+          <div class="flex flex-col relative flex-shrink-0 w-30 group">
+            <button data-page="video" class="w-full">
+              <img
+                src="./assets/atedvor.png"
+                class="h-[180px] object-cover rounded-t w-full transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 rounded-t bg-black bg-opacity-0 group-hover:bg-opacity-30 transition pointer-events-none"
+              ></div>
+            </button>
+            <div
+              class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
+            >
+              <button>
+                <img
+                  src="./assets/more_info.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+              <button>
+                <img
+                  src="./assets/more_options.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+            </div>
+          </div>
+
+          <!--Movie 4-->
+          <div class="flex flex-col relative flex-shrink-0 w-30 group">
+            <button data-page="video" class="w-full">
+              <img
+                src="./assets/en.png"
+                class="h-[180px] object-cover rounded-t w-full transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 rounded-t bg-black bg-opacity-0 group-hover:bg-opacity-30 transition pointer-events-none"
+              ></div>
+            </button>
+            <div
+              class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
+            >
+              <button>
+                <img
+                  src="./assets/more_info.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+              <button>
+                <img
+                  src="./assets/more_options.png"
+                  class="brightness-50 hover:brightness-[2.5]"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carrossel Popular -->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">
+          Popular on Netflix
+        </h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="./assets/barba.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 2 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="./assets/bef.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 3 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img
+              src="./assets/lucifer.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 4 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img
+              src="./assets/after_lucifer.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!--Trending Now-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">Trending Now</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img
+              src="./assets/switched.png"
+              class="w-full h-full object-cover"
+            />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 2 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img
+              src="./assets/last_king.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 3 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img
+              src="./assets/standing_soldier.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 4 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img
+              src="./assets/cut_woman.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!--Top 10 in Mozambique Today-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">
+          Top 10 in Mozambique Today
+        </h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="./assets/before.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 2 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="/assets/boys.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 3 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="./assets/gul.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 4 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="/assets/rea.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My List-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">My List</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="./assets/list.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/se.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/rection.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/ng.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- African Movies-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">African Movies</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/er.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/merry_another.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/der.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/lra.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Nollywood Movies & TV-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">
+          Nollywood Movies & TV
+        </h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <div class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative">
+            <img src="./assets/prison.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </div>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/suit.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/nleaf.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/dancing_figure.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Netflix Originals-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">Netflix Originals</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/p.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/ract.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/as.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Watch it Again-->
+      <div class="px-3 mt-9">
+        <h1 class="text-white text-xl font-semibold mb-2">Watch it Again</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/bangth.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/locked.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/sur.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/shooting_man.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- New Releases-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">New Releases</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/live.png" class="w-full h-full object-cover" />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/old.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/een.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/incou.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- TV Thrillers & Releases-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">
+          TV Thrillers & Releases
+        </h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/singing_woman.png"
+              class="w-full h-full object-cover"
+            />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/or.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/gap.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/the_rock.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- US TV Shows-->
+      <div class="px-3 mt-5">
+        <h1 class="text-white text-xl font-semibold mb-2">US TV Shows</h1>
+        <div class="flex gap-2 overflow-x-auto no-scrollbar">
+          <!-- Filme 1 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/del_sur.png"
+              class="w-full h-full object-cover"
+            />
+            <!-- Overlay opcional ao passar o mouse -->
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 2 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/indg.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 3 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img
+              src="./assets/of_the_ma.png"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+          <!-- Filme 4 -->
+          <button
+            data-page="video"
+            class="flex-shrink-0 w-35 h-50 rounded overflow-hidden relative"
+          >
+            <img src="./assets/pr.png" class="w-full h-full object-cover" />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition"
+            ></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav Bar -->
+    <div
+      class="flex flex-row justify-between px-3 items-center h-14 fixed bottom-0 left-0 w-full bg-[#121212]/95 backdrop-blur-sm"
+      id="navbar"
+    >
+      <button data-page="home">
+        <img src="./assets/home_icon.svg" class="w-11 h-11 brightness-[3.5]" />
+      </button>
+      <button data-page="search">
+        <img
+          src="./assets/search_icon.svg"
+          class="w-11 h-11 hover:brightness-[2.5]"
+        />
+      </button>
+      <button data-page="comingsoon">
+        <img
+          src="./assets/coming_soon_icon.svg"
+          class="w-11 h-11 hover:brightness-[2.5]"
+        />
+      </button>
+      <button data-page="downloads">
+        <img
+          src="./assets/downloads_icon.svg"
+          class="w-11 h-11 hover:brightness-[2.5]"
+        />
+      </button>
+      <button data-page="more">
+        <img
+          src="./assets/more_icon.svg"
+          class="w-11 h-11 hover:brightness-[2.5]"
+        />
+      </button>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>

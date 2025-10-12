@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-black flex flex-col">
+    <!-- Search Bar -->
+    <div
+      class="flex flex-row items-center h-14 bg-[#424242] backdrop-blur-sm w-full px-3 mt-10"
+    >
+      <!--Icone Search-->
+      <img src="../assets/search.svg" class="w-6 h-6 ml-3 mr-2 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150" />
+      <form action="/buscar" method="GET" class="w-full max-w-md mx-auto">
+        <input
+          type="text"
+          name="q"
+          placeholder="Search for a show, movie, genre, e.t.c."
+          class="w-full py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-[#424242] text-white placeholder-gray-400 rounded-md"
+        />
+        <!-- Botão invisível para permitir envio com Enter -->
+        <button type="submit" class="hidden">Pesquisar</button>
+      </form>
+      <!-- Botao com Icone de Microfone -->
+       <button></button>
+         <img
+           src="../assets/microphone.svg"
+           class="w-6 h-6 ml-3 mr-2 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+         />
+       </button>
+    </div>
+
+    <!-- Espaco com o Top Searches -->
+    <div class="mt-4 h-[25px] w-[164px] ml-[10px] mb-6 bg-black">
+      <h1 class="font-bold text-white font-[Inter] text-xl">Top Searches</h1>
+    </div>
+    <!-- Filmes mais procurados -->
+     <div class="flex flex-col gap-1 mb-20">
+     <!--Filme 1-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/citation.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-thin text-white font-[Inter] text-md">Citation</h1>
+      <!-- Icone de Play -->
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    <!--Filme 2-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/oloture.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-thin text-white font-[Inter] text-md">Oloture</h1>
+      <!-- Icone de Play -->
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    <!--Filme 3-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/the_setup.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-thin text-white font-[Inter] text-md">The Setup</h1>
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    <!--Filme 4-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/breaking_bad.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-thin text-white font-[Inter] text-md">Breaking Bad</h1>
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    <!--Filme 5-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/ozark.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-thin text-white font-[Inter] text-md">Ozark</h1>
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    <!--Filme 6-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/the_governor.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-thin text-white font-[Inter] text-md">The Governor</h1>
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    <!--Filme 7-->
+     <div class="flex flex-row items-center h-25 w-full bg-[#424242]/95 backdrop-blur-sm">
+      <img
+        src="../assets/your_excellency.png"
+        class="w-40 h-full rounded-sm mr-4 hover:brightness-50 cursor-pointer"
+      />
+      <h1 class="font-light text-white font-[Inter] text-md">Your Excellency</h1>
+      <div class="ml-auto mr-1">
+        <img
+          src="../assets/bx_bx-play-circle.svg"
+          class="w-8 h-8 transition-all duration-200 hover:scale-110 hover:brightness-125 hover:invert hover:sepia hover:hue-rotate-[330deg] hover:saturate-[6] hover:brightness-150 cursor-pointer"
+        />
+      </div>
+    </div>
+    </div>
+  </body>
+</html>

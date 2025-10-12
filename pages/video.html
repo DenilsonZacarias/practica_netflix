@@ -1,0 +1,159 @@
+video.html: <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Screen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body class="bg-black m-0 p-0 overflow-hidden">
+    <div id="video-container" class="fixed inset-0 z-50 bg-black">
+      <video
+        id="video"
+        class="w-full h-full object-cover"
+        src="../assets/RammsteinIchWill.mp4"
+        playsinline
+      ></video>
+      <!--Overlay captura cliques-->
+      <div id="click-overlay" class="absolute inset-0 z-60"></div>
+
+      <!-- Camada de controles -->
+      <div
+        class="absolute inset-0 flex flex-col justify-between text-white px-4 py-3"
+      >
+        <!-- Top controls -->
+        <div class="flex flex-col items-start gap-6 gap-4">
+          <!-- Seta (voltar) -->
+          <button id="back-button" class="w-8 h-8">
+            <img src="../assets/seta_voltar.svg" alt="Voltar" />
+          </button>
+
+          <!-- Controle de brilho (simulado) -->
+          <div
+            class="controls-brightness flex flex-col items-start gap-[110px]"
+          >
+            <img
+              src="../assets/sol_de_brilho.svg"
+              alt="Brilho"
+              class="w-6 h-6"
+            />
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="45"
+              id="brightness"
+              class="ml-3 self-start w-[100px] h-[5px] bg-gray-700 rounded-full accent-white transform -rotate-90 origin-left"
+            />
+          </div>
+        </div>
+
+        <!-- Middle: botoes do centro -->
+        <div
+          class="controls-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-between items-center w-96 pointer-events-auto px-4"
+        >
+          <!--Icone regressar 10 segundos-->
+          <button id="reverse-seconds" class="w-14 h-14">
+            <img
+              src="../assets/regressar_segundos.svg"
+              alt="reverse-seconds"
+              class="w-full h-full"
+            />
+          </button>
+          <button id="toggle-play" class="w-14 h-14 relative">
+            <!--Icone play-->
+            <img
+              id="icon-play"
+              src="../assets/botao_play.svg"
+              alt="Play"
+              class="w-full h-full"
+            />
+            <!--Icone pause-->
+            <svg
+              id="icon-pause"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-full h-full absolute top-0 left-0 hidden"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 5.25v13.5m-7.5-13.5v13.5"
+              />
+            </svg>
+          </button>
+
+          <!--Icone avancar 10 segundos-->
+          <button id="advance-seconds" class="w-14 h-14">
+            <img
+              src="../assets/avancar_segundos.svg"
+              alt="advance-seconds"
+              class="w-full h-full"
+            />
+          </button>
+        </div>
+
+        <!-- Bottom controls -->
+        <div id="bottom-controls" class="flex flex-col gap-3">
+          <!-- Progresso -->
+          <div class="w-full">
+            <input
+              type="range"
+              id="progress"
+              min="0"
+              max="100"
+              value="0"
+              class="w-full h-2 accent-red-500"
+            />
+            <div class="flex justify-between text-xs mt-1">
+              <span id="current-time">0:00</span>
+              <span id="duration">0:00</span>
+            </div>
+          </div>
+
+          <!-- Botões secundários -->
+          <div class="flex justify-between text-xs text-white gap-3">
+            <button class="opacity-80 hover:opacity-100">Speed (1x)</button>
+            <button
+              class="opacity-80 hover:opacity-100 flex flex-row gap-1 items-center"
+            >
+              <img src="../assets/cadeado_aberto.svg" />
+              <p>Lock</p>
+            </button>
+            <button
+              class="opacity-80 hover:opacity-100 flex flex-row gap-1 items-center"
+            >
+              <img src="../assets/episodios.svg" />
+              <p>Episodes</p>
+            </button>
+            <button
+              class="opacity-80 hover:opacity-100 flex flex-row gap-1 items-center"
+            >
+              <img src="../assets/legendas.svg" />
+              <p class="whitespace-nowrap">Audio & Subtitles</p>
+            </button>
+            <button
+              class="opacity-80 hover:opacity-100 flex flex-row gap-1 items-center"
+            >
+              <img src="../assets/proximo_episodio.svg" />
+              <p>Next Ep.</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../assets/js/videoJS.js"></script>
+</html>

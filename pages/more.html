@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#000000] h-full w-full flex flex-col pb-16">
+    <!--div usuarios-->
+    <div class="flex flex-row justify-between items-center px-1 py-2 mt-9">
+      <!--Emenalo-->
+      <button class="flex flex-col gap-1 items-center">
+        <img
+          src="../assets/user1.svg"
+          alt="Emenalo"
+          class="w-[5rem] h-[5rem] rounded-sm transition duration-300 transform hover:-translate-y-2"
+        />
+      </button>
+
+      <!--Onyeka-->
+      <button class="flex flex-col gap-1 items-center">
+        <img
+          src="../assets/user2.svg"
+          alt="Onyeka"
+          class="w-[5rem] h-[5rem] rounded-sm transition duration-300 transform hover:-translate-y-2"
+        />
+      </button>
+
+      <!--Thelma-->
+      <button class="flex flex-col gap-1 items-center">
+        <img
+          src="../assets/user3.svg"
+          alt="Thelma"
+          class="w-[5rem] h-[5rem] rounded-sm transition duration-300 transform hover:-translate-y-2"
+        />
+      </button>
+
+      <!--Kids-->
+      <button class="flex flex-col gap-1 items-center">
+        <img
+          src="../assets/user4.svg"
+          alt="Kids"
+          class="w-[5rem] h-[5rem] rounded-sm transition duration-300 transform hover:-translate-y-2"
+        />
+      </button>
+
+      <!--More-->
+      <button class="flex flex-col gap-1 items-center">
+        <img
+          src="../assets/more1.svg"
+          alt="More"
+          class="w-[5rem] h-[5rem] rounded-sm transition duration-300 transform mb-3 hover:-translate-y-2"
+        />
+      </button>
+    </div>
+
+    <!--Gerir perfis-->
+    <div class="flex flex-row gap-1 items-center justify-center py-2">
+      <img src="../assets/bx_bxs-pencil.png" alt="Gerir perfis" />
+      <button>
+        <p class="text-white text-sm hover:text-red-500">Manage Profiles</p>
+      </button>
+    </div>
+
+    <!--Tell friends-->
+    <div class="flex flex-col py-4 px-3 bg-neutral-800">
+      <div class="flex flex-row gap-3 items-center">
+        <img src="../assets/messages.svg" alt="Tell friends" />
+        <p class="text-white text-sm">Tell friends about Netflix.</p>
+      </div>
+      <!--pequenos textos-->
+      <p class="text-white text-xs mt-2">
+        Share Netflix with your friends and earn a free month when they sign up
+        for a paid plan.
+      </p>
+      <!--Terms & Conditions-->
+      <button>
+        <p
+          class="text-white text-xs mt-3 underline text-left hover:text-red-500"
+        >
+          Terms & Conditions
+        </p>
+      </button>
+      <!--link e opcao copiar-->
+      <div class="flex flex-row gap-2 items-center mt-4">
+        <input
+          type="text"
+          value="www.netflix.com/joinfree"
+          class="bg-black text-white text-lg px-2 py-1 rounded"
+          readonly
+        />
+        <button
+          class="bg-white text-black font-semibold text-lg py-1 w-1/3 rounded hover:bg-red-500 hover:text-white"
+        >
+          Copy Link
+        </button>
+      </div>
+
+      <!-- Redes Sociais -->
+      <div class="flex flex-row justify-between items-center px-3 mt-6">
+        <button>
+          <img
+            src="../assets/whatsapp.svg"
+            alt="WhatsApp"
+            class="w-12 h-12 transition duration-300 transform hover:-translate-y-5"
+          />
+        </button>
+        <img src="../assets/border.svg" alt="Separador" class="w-12 h-12" />
+        <button>
+          <img
+            src="../assets/facebook.svg"
+            alt="Facebook"
+            class="w-12 h-12 transition duration-300 transform hover:translate-y-4"
+          />
+        </button>
+        <img src="../assets/border.svg" alt="Separador" class="w-12 h-12" />
+        <button>
+          <img
+            src="../assets/gmail.svg"
+            alt="gMail"
+            class="w-12 h-12 object-cover transition duration-300 transform hover:-translate-y-4"
+          />
+        </button>
+        <img src="/assets/border.svg" alt="Separador" class="w-12 h-12" />
+        <!--More-->
+        <button class="flex flex-col items-center">
+          <img src="../assets/3points.svg" alt="More" class="w-6 h-3" />
+          <p class="text-white text-md font-semibold hover:text-red-500">
+            More
+          </p>
+        </button>
+      </div>
+    </div>
+
+    <!--My List-->
+
+    <button
+      class="flex flex-row gap-2 items-center justify-start py-2 border-b w-full border-[#424242]"
+    >
+      >
+      <img src="../assets/check-mark-button.svg" alt="My List" />
+      <p class="text-white text-sm hover:text-red-500">My List</p>
+    </button>
+
+    <!--App Settings & More-->
+    <div class="flex flex-col px-3 gap-3 py-4 mb-20">
+      <button>
+        <p class="text-left text-white text-sm hover:text-red-500">
+          App Settings
+        </p>
+      </button>
+      <button>
+        <p class="text-left text-white text-sm hover:text-red-500">Account</p>
+      </button>
+      <button>
+        <p class="text-left text-white text-sm hover:text-red-500">Help</p>
+      </button>
+      <button>
+        <p class="text-left text-white text-sm hover:text-red-500">Sign Out</p>
+      </button>
+    </div>
+  </body>
+</html>
