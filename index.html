@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <!-- #2 in Nigeria-->
+      <!-- #2 in Mozambique-->
       <div
         class="flex flex-row items-center justify-center h-9 w-auto px-4 gap-1 mt-0"
       >
@@ -89,7 +89,9 @@
         <div
           class="flex flex-col items-center hover:bg-neutral-800 rounded-full p-2"
         >
-          <button><img src="./assets/feather_info.svg" /></button>
+          <button class="info-btn" data-title="Spartacus">
+            <img src="./assets/feather_info.svg" />
+          </button>
           <p class="text-white font-light font-[Open Sans]">Info</p>
         </div>
       </div>
@@ -176,7 +178,8 @@
             <div
               class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
             >
-              <button>
+              <!--Associando API ao botao info-->
+              <button class="info-btn" data-title="Night School">
                 <img
                   src="./assets/more_info.png"
                   class="brightness-50 hover:brightness-[2.5]"
@@ -205,7 +208,8 @@
             <div
               class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
             >
-              <button>
+              <!--Associando API ao botao info-->
+              <button class="info-btn" data-title="the Christmas Chronicles 2">
                 <img
                   src="./assets/more_info.png"
                   class="brightness-50 hover:brightness-[2.5]"
@@ -234,7 +238,7 @@
             <div
               class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
             >
-              <button>
+              <button class="info-btn" data-title="Designated Survivor">
                 <img
                   src="./assets/more_info.png"
                   class="brightness-50 hover:brightness-[2.5]"
@@ -263,7 +267,8 @@
             <div
               class="flex flex-row justify-between px-2 py-2 bg-neutral-900 rounded-b relative z-10"
             >
-              <button>
+              <!--Associando API ao botao info-->
+              <button class="info-btn" data-title="The Queen's Gambit">
                 <img
                   src="./assets/more_info.png"
                   class="brightness-50 hover:brightness-[2.5]"
@@ -840,6 +845,38 @@
         />
       </button>
     </div>
+
+    <!-- no final do body do index.html, antes de <script src="./main.js"> -->
+    <!-- Modal (hidden por padrão) -->
+    <div
+      id="movie-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center"
+    >
+      <div id="modal-backdrop" class="absolute inset-0 bg-black/60"></div>
+      <div
+        class="relative z-60 max-w-2xl w-[90%] bg-[#111] rounded p-4 text-white shadow-lg"
+      >
+        <button id="modal-close" class="absolute top-3 right-3 text-white">
+          ✕
+        </button>
+        <div id="modal-content" class="flex gap-4">
+          <img
+            id="modal-poster"
+            src=""
+            alt="poster"
+            class="w-32 h-48 object-cover rounded"
+          />
+          <div>
+            <h2 id="modal-title" class="text-xl font-bold"></h2>
+            <p id="modal-year" class="text-sm text-gray-300"></p>
+            <p id="modal-plot" class="mt-3 text-sm"></p>
+            <p id="modal-actors" class="mt-2 text-xs text-gray-300"></p>
+          </div>
+        </div>
+        <div id="modal-error" class="text-red-400 mt-3 hidden"></div>
+      </div>
+    </div>
+
     <script src="./main.js"></script>
   </body>
 </html>

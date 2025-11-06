@@ -1,3 +1,15 @@
+// Detecta o nome do repositório automaticamente
+const repoName = window.location.pathname.split("/")[1]; // "practica_netflix"
+const basePath = repoName ? `/${repoName}` : "";
+
+// Função auxiliar para gerar caminhos corretos
+function asset(path) {
+  return `${basePath}/assets/${path}`;
+}
+function page(path) {
+  return `${basePath}/pages/${path}`;
+}
+
 const app = document.getElementById("app");
 let previousPage = null;
 let currentPage = null;
@@ -12,18 +24,35 @@ window.addEventListener("navigate", (e) => {
 });
 
 const routes = {
-  logo: "/pages/logo.html",
-  username: "/pages/username.html",
-  home: "/index.html",
-  movies: "/pages/movies.html",
-  mylist: "/pages/mylist.html",
-  downloads: "/pages/downloads.html",
-  tvshows: "/pages/tvshows.html",
-  search: "/pages/search.html",
-  comingsoon: "/pages/comingsoon.html",
-  more: "/pages/more.html",
-  video: "/pages/video.html", // adicionei a rota para a página de vídeo
+  logo: "logo.html",
+  username: "username.html",
+  home: "index.html",
+  movies: "movies.html",
+  mylist: "mylist.html",
+  downloads: "downloads.html",
+  tvshows: "tvshows.html",
+  search: "search.html",
+  comingsoon: "comingsoon.html",
+  more: "more.html",
+  video: "video.html",
 };
+
+//Destaque dinamico em pagina no navbar
+function highlightNavbar(page) {
+  document.querySelectorAll("#navbar button[data-page]").forEach((btn) => {
+    const btnPage = btn.getAttribute("data-page");
+    if (btnPage === page) {
+      btn.classList.add(
+        "scale-110",
+        "shadow-lg",
+        "transition-transform",
+        "duration-200"
+      );
+    } else {
+      btn.classList.remove("scale-110", "shadow-lg");
+    }
+  });
+}
 
 // Função que carrega páginas
 function navigateTo(page) {
@@ -75,7 +104,8 @@ function navigateTo(page) {
         // Carregar script externo se não existir
         if (!document.getElementById("video-script")) {
           const script = document.createElement("script");
-          script.src = "/assets/js/videoJS.js";
+          console.log("basePath =", basePath);
+          script.src = `${basePath}/assets/js/videoJS.js`;
           script.id = "video-script";
           document.body.appendChild(script);
         }
@@ -88,7 +118,7 @@ function navigateTo(page) {
           if (backButton) {
             console.log("Botão encontrado! Adicionando listener..."); // debug
 
-            // Remover listeners antigos (se existirem)
+            // Remover listeners antigos
             const newBackButton = backButton.cloneNode(true);
             backButton.parentNode.replaceChild(newBackButton, backButton);
 
@@ -114,7 +144,10 @@ function navigateTo(page) {
             .forEach((btn) => {
               btn.addEventListener("click", () => navigateTo("video"));
             });
+          attachInfoButtons(); // Mover attachInfoButtons para cá
         }, 200);
+      } else {
+        attachInfoButtons(); // Chamar aqui para outras páginas também
       }
     })
     .catch((err) => console.error(err));
@@ -125,3 +158,137 @@ function navigateTo(page) {
 // ======================
 navigateTo("logo");
 setTimeout(() => navigateTo("username"), 4000);
+
+/* === CONFIG API === */
+const apiKey = "3593279baad23235fe2361d0d8c44d10";
+const apiBase = "https://api.themoviedb.org/3";
+
+/* utility para abrir/fechar modal e preencher */
+function openModal() {
+  const modal = document.getElementById("movie-modal");
+  if (!modal) return;
+  modal.classList.remove("hidden");
+  modal.style.display = "flex";
+}
+function closeModal() {
+  const modal = document.getElementById("movie-modal");
+  if (!modal) return;
+  modal.classList.add("hidden");
+  modal.style.display = "none";
+}
+
+/* Limpa modal e mostra loading placeholder */
+function setModalLoading() {
+  const errEl = document.getElementById("modal-error");
+  if (errEl) errEl.classList.add("hidden");
+
+  const titleEl = document.getElementById("modal-title");
+  if (titleEl) titleEl.textContent = "Loading...";
+
+  const yearEl = document.getElementById("modal-year");
+  if (yearEl) yearEl.textContent = "";
+
+  const plotEl = document.getElementById("modal-plot");
+  if (plotEl) plotEl.textContent = "";
+
+  const posterEl = document.getElementById("modal-poster");
+  if (posterEl) posterEl.src = "";
+
+  const actorsEl = document.getElementById("modal-actors");
+  if (actorsEl) actorsEl.textContent = "";
+}
+
+/* Preenche modal com dados */
+function fillModal(data) {
+  const titleEl = document.getElementById("modal-title");
+  const yearEl = document.getElementById("modal-year");
+  const plotEl = document.getElementById("modal-plot");
+  const actorsEl = document.getElementById("modal-actors");
+  const posterEl = document.getElementById("modal-poster");
+
+  if (titleEl) titleEl.textContent = data.title || "Sem título";
+  if (yearEl) yearEl.textContent = data.year ? `Ano: ${data.year}` : "";
+  if (plotEl) plotEl.textContent = data.plot || "";
+  if (actorsEl) actorsEl.textContent = data.actors || "";
+  if (posterEl)
+    posterEl.src = data.poster || `${basePath}/assets/placeholder_poster.png`;
+}
+
+/* Função principal que busca a API pelo título (ou id se preferir) */
+async function fetchMovieInfoByTitle(title) {
+  const modalError = document.getElementById("modal-error");
+  try {
+    setModalLoading();
+    openModal();
+
+    // 1) pesquisa por título
+    const searchUrl = `${apiBase}/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
+      title
+    )}&language=pt-PT`;
+    const res = await fetch(searchUrl);
+    if (!res.ok) throw new Error(`Pesquisa falhou (${res.status})`);
+    const json = await res.json();
+
+    const movie =
+      json.results && json.results.length > 0 ? json.results[0] : null;
+    if (!movie) throw new Error("Filme não encontrado");
+
+    // 2) obter detalhes por ID (inclui credits)
+    const detailsUrl = `${apiBase}/movie/${movie.id}?api_key=${apiKey}&language=pt-PT&append_to_response=credits`;
+    const detailsRes = await fetch(detailsUrl);
+    if (!detailsRes.ok)
+      throw new Error(`Erro ao obter detalhes (${detailsRes.status})`);
+    const details = await detailsRes.json();
+
+    fillModal({
+      title: details.title,
+      year: details.release_date ? details.release_date.split("-")[0] : "-",
+      plot: details.overview,
+      poster: details.poster_path
+        ? `https://image.tmdb.org/t/p/w500${details.poster_path}`
+        : "",
+      actors:
+        details.credits?.cast
+          ?.slice(0, 5)
+          .map((a) => a.name)
+          .join(", ") || "Elenco não disponível",
+    });
+  } catch (err) {
+    console.error("fetchMovieInfoByTitle error:", err);
+    if (modalError) {
+      modalError.textContent = `Erro ao carregar a informação: ${err.message}`;
+      modalError.classList.remove("hidden");
+    }
+  }
+}
+
+/* Liga os botões ".info-btn" dentro do app — chamar depois de app.innerHTML ser atualizado */
+function attachInfoButtons() {
+  // remove listeners duplicados clonando
+  document.querySelectorAll(".info-btn").forEach((btn) => {
+    const clone = btn.cloneNode(true);
+    btn.parentNode.replaceChild(clone, btn);
+  });
+  // requery e attach
+  document.querySelectorAll(".info-btn").forEach((btn) => {
+    const title = btn.getAttribute("data-title") || btn.dataset.title;
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (!title) {
+        console.warn("info-btn sem data-title");
+        return;
+      }
+      fetchMovieInfoByTitle(title);
+    });
+  });
+}
+
+/* Fechar modal ao clicar no backdrop ou no close */
+document.addEventListener("click", (ev) => {
+  const modal = document.getElementById("movie-modal");
+  if (!modal || modal.classList.contains("hidden")) return;
+  const target = ev.target;
+  if (target.id === "modal-backdrop" || target.id === "modal-close") {
+    closeModal();
+  }
+});
