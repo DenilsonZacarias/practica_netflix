@@ -160,7 +160,6 @@ navigateTo("logo");
 setTimeout(() => navigateTo("username"), 4000);
 
 /* === CONFIG API === */
-const apiKey = "3593279baad23235fe2361d0d8c44d10";
 const apiBase = "https://api.themoviedb.org/3";
 
 /* utility para abrir/fechar modal e preencher */
@@ -215,35 +214,27 @@ function fillModal(data) {
 }
 
 /* Função principal que busca a API pelo título (ou id se preferir) */
+// procura por título e abre modal com o primeiro resultado
 async function fetchMovieInfoByTitle(title) {
-  const modalError = document.getElementById("modal-error");
   try {
     setModalLoading();
     openModal();
 
-    // 1) pesquisa por título
-    const searchUrl = `${apiBase}/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-      title
-    )}&language=pt-PT`;
-    const res = await fetch(searchUrl);
-    if (!res.ok) throw new Error(`Pesquisa falhou (${res.status})`);
+    // chama a serverless function
+    const res = await fetch(`/api/movie?q=${encodeURIComponent(title)}`);
+    if (!res.ok) throw new Error(`Erro: ${res.status}`);
     const json = await res.json();
-
-    const movie =
-      json.results && json.results.length > 0 ? json.results[0] : null;
+    const movie = json.results && json.results.length ? json.results[0] : null;
     if (!movie) throw new Error("Filme não encontrado");
 
-    // 2) obter detalhes por ID (inclui credits)
-    const detailsUrl = `${apiBase}/movie/${movie.id}?api_key=${apiKey}&language=pt-PT&append_to_response=credits`;
-    const detailsRes = await fetch(detailsUrl);
-    if (!detailsRes.ok)
-      throw new Error(`Erro ao obter detalhes (${detailsRes.status})`);
+    // pede detalhes (com elenco)
+    const detailsRes = await fetch(`/api/movieDetails?id=${movie.id}`);
     const details = await detailsRes.json();
 
     fillModal({
-      title: details.title,
-      year: details.release_date ? details.release_date.split("-")[0] : "-",
-      plot: details.overview,
+      title: details.title || movie.title,
+      year: details.release_date ? details.release_date.split("-")[0] : "",
+      plot: details.overview || "",
       poster: details.poster_path
         ? `https://image.tmdb.org/t/p/w500${details.poster_path}`
         : "",
@@ -251,14 +242,12 @@ async function fetchMovieInfoByTitle(title) {
         details.credits?.cast
           ?.slice(0, 5)
           .map((a) => a.name)
-          .join(", ") || "Elenco não disponível",
+          .join(", ") || "Elenco indisponível",
     });
   } catch (err) {
-    console.error("fetchMovieInfoByTitle error:", err);
-    if (modalError) {
-      modalError.textContent = `Erro ao carregar a informação: ${err.message}`;
-      modalError.classList.remove("hidden");
-    }
+    console.error(err);
+    document.getElementById("modal-error").textContent = err.message;
+    document.getElementById("modal-error").classList.remove("hidden");
   }
 }
 
