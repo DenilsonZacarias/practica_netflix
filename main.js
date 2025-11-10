@@ -1,40 +1,31 @@
 // Detecta o nome do repositório automaticamente
-const repoName = window.location.pathname.split("/")[1]; // "practica_netflix"
-const basePath = repoName ? `/${repoName}` : "";
+const repoName = window.location.pathname.split("/").filter(Boolean)[0] || ""; // "practica_netflix"
+const basePath =
+  window.location.hostname.includes("github.io") && repoName
+    ? `/${repoName}` // ex: '/netflix_clone'
+    : ""; // local -> ''
 
-// Função auxiliar para gerar caminhos corretos
-function asset(path) {
-  return `${basePath}/assets/${path}`;
-}
-function page(path) {
-  return `${basePath}/pages/${path}`;
+function resolveAsset(path) {
+  // path: 'img/foo.png' ou 'js/videoJS.js'
+  return basePath ? `${basePath}/assets/${path}` : `assets/${path}`;
 }
 
 const app = document.getElementById("app");
 let previousPage = null;
 let currentPage = null;
 
-window.addEventListener("navigate", (e) => {
-  const page = e.detail.page;
-  if (routes[page]) {
-    navigateTo(page);
-  } else {
-    console.error(`Rota para página "${page}" não encontrada.`);
-  }
-});
-
 const routes = {
-  logo: "logo.html",
-  username: "username.html",
+  logo: "pages/logo.html",
+  username: "pages/username.html",
   home: "index.html",
-  movies: "movies.html",
-  mylist: "mylist.html",
-  downloads: "downloads.html",
-  tvshows: "tvshows.html",
-  search: "search.html",
-  comingsoon: "comingsoon.html",
-  more: "more.html",
-  video: "video.html",
+  movies: "pages/movies.html",
+  mylist: "pages/mylist.html",
+  downloads: "pages/downloads.html",
+  tvshows: "pages/tvshows.html",
+  search: "pages/search.html",
+  comingsoon: "pages/comingsoon.html",
+  more: "pages/more.html",
+  video: "pages/video.html",
 };
 
 //Destaque dinamico em pagina no navbar
@@ -53,6 +44,23 @@ function highlightNavbar(page) {
     }
   });
 }
+
+// Função auxiliar para gerar caminhos corretos
+function asset(path) {
+  return `${basePath}/assets/${path}`;
+}
+function page(path) {
+  return `${basePath}/pages/${path}`;
+}
+
+window.addEventListener("navigate", (e) => {
+  const page = e.detail.page;
+  if (routes[page]) {
+    navigateTo(page);
+  } else {
+    console.error(`Rota para página "${page}" não encontrada.`);
+  }
+});
 
 // Função que carrega páginas
 function navigateTo(page) {
